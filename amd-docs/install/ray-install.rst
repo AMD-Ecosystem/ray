@@ -53,7 +53,7 @@ Build your own Docker image
 
       docker run --rm -it --device /dev/dri --device /dev/kfd -p 8265:8265 --group-add video \
       --cap-add SYS_PTRACE --security-opt seccomp=unconfined --privileged -v $HOME/.ssh:/root/.ssh \
-      -v $HOME:$HOME --shm-size 128G -w $PWD --name rocm_verl \
+      -v $HOME:$HOME --shm-size 128G -w $PWD --name rocm_ray \
       my-rocm-ray /bin/bash
 
    .. note::
@@ -164,9 +164,7 @@ to build Ray with ROCm support from source.
 Test the Ray installation
 ======================================================================================
 
-Ray unit tests are optional for validating your installation if you used a
-prebuilt Docker image from AMD ROCm Docker Hub. To run unit tests manually and
-validate your installation fully, follow these steps:
+To run unit tests manually and validate your installation fully, follow these steps:
 
 1. After launching the container, test whether Ray detects ROCm devices as expected.
 
