@@ -181,3 +181,4 @@ validate your installation fully, follow these steps:
    .. code-block:: shell-session
 
       {'memory': 1420360912896.0, 'GPU': 8.0, 'accelerator_type:AMD-Instinct-MI300X-OAM': 1.0, 'node:10.7.39.110': 1.0, 'CPU': 384.0, 'node:__internal_head__': 1.0, 'object_store_memory': 200000000000.0}
+
