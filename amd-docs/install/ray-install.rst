@@ -34,6 +34,12 @@ To install Ray on ROCm, you have the following options:
 Build your own Docker image
 --------------------------------------------------------------------------------------
 
+Install the ROCm 10.0.0 driver stack on the host before you build or run the container.
+See the `ROCm 10.0.0 documentation <https://rocm.docs.amd.com/en/docs-10.0.0/>`__.
+This host driver is separate from the ROCm userspace version bundled inside the image.
+The two must be compatible. ``docker run`` with ``--device=/dev/kfd`` and ``--device=/dev/dri``
+fails if the host kernel driver is missing, because those device nodes are created by amdgpu and KFD on the host.
+
 1. Clone the `https://github.com/AMD-Ecosystem/ray <https://github.com/AMD-Ecosystem/ray>`__ repository:
 
    .. code-block:: bash
@@ -51,14 +57,35 @@ Build your own Docker image
 
    .. code-block:: bash
 
-      docker run --rm -it --device /dev/dri --device /dev/kfd -p 8265:8265 --group-add video \
-      --cap-add SYS_PTRACE --security-opt seccomp=unconfined --privileged -v $HOME/.ssh:/root/.ssh \
-      -v $HOME:$HOME --shm-size 128G -w $PWD --name rocm_ray \
-      my-rocm-ray /bin/bash
+      docker run -it -d \
+         --network=host \
+         --device=/dev/kfd \
+         --device=/dev/dri \
+         --ipc=host \
+         --shm-size 128G \
+         --group-add video \
+         --cap-add=SYS_PTRACE \
+         --security-opt seccomp=unconfined \
+         -p 8265:8265 \
+         -v $(pwd):/host_dir \
+         -w /app \
+         --name rocm_ray \
+         my-rocm-ray \
+         /bin/bash
+
+      docker attach rocm_ray
 
    .. note::
 
       The ``--shm-size`` parameter allocates shared memory for the container. It can be adjusted based on your system's resources.
+      Replace ``$(pwd)`` with the absolute path to the directory you want to mount inside the container.
+
+   .. warning::
+
+      ``--cap-add=SYS_PTRACE`` and ``--security-opt seccomp=unconfined`` reduce container isolation.
+      ``--network=host`` and ``--ipc=host`` share the host network and IPC namespace with the container.
+      Use this configuration on a trusted development host.
+      On a shared or production host, drop the flags that your workload does not require.
 
 4. Verify the installed Ray version:
 
@@ -133,13 +160,21 @@ Follow these steps if you prefer to install ROCm manually on your host system or
       |  No running processes found                                                  |
       +------------------------------------------------------------------------------+
    
-2. Install the required version of Ray with ROCm support using pip:
+2. Install PyTorch 2.12.0 with ROCm support. Follow the
+   `PyTorch on ROCm installation guide <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html?fam=instinct&gpu=amd-instinct-mi355x&os=linux&rocm-ver=10.0.0&pytorch-ver=2.12.0&i=pip&w=compute&gfx=gfx950>`__.
+   That page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
+
+3. Install vLLM 0.27.0 with ROCm support. Follow the
+   `vLLM on ROCm installation guide <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/inference/vllm.html?fam=instinct&gpu=mi355x&rocm-ver=10.0.0&vllm-ver=0.27&i=pip&w=compute&gfx=gfx950>`__.
+   Select your GPU on that page if you use a different Instinct platform.
+
+4. Install the required version of Ray with ROCm support using pip:
 
    .. code-block:: bash
 
       pip install -U ray[default,serve]==2.58.0
 
-3. Verify the installed Ray version:
+5. Verify the installed Ray version:
 
    .. code-block:: bash
 
