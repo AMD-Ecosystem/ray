@@ -38,7 +38,7 @@ Build your own Docker image
 
    .. code-block:: bash
 
-      git clone https://github.com/AMD-Ecosystem/ray.git -b release/2.58.0 
+      git clone https://github.com/AMD-Ecosystem/ray.git -b release/2.58.0
 
 2. Build the Docker container using the Dockerfile in the ``ray/docker`` directory:
 
