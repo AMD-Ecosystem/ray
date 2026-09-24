@@ -43,3 +43,4 @@ To contribute to the documentation, refer to
 `Contributing to Ray <https://github.com/AMD-Ecosystem/ray/blob/master/CONTRIBUTING.rst>`__.
 
 You can find licensing information on the :doc:`Licensing <about/license>` page.
+
