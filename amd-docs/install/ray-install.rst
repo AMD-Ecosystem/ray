@@ -34,12 +34,6 @@ To install Ray on ROCm, you have the following options:
 Build your own Docker image
 --------------------------------------------------------------------------------------
 
-Install the ROCm 10.0.0 driver stack on the host before you build or run the container.
-See the `ROCm 10.0.0 documentation <https://rocm.docs.amd.com/en/docs-10.0.0/>`__.
-This host driver is separate from the ROCm userspace version bundled inside the image.
-The two must be compatible. ``docker run`` with ``--device=/dev/kfd`` and ``--device=/dev/dri``
-fails if the host kernel driver is missing, because those device nodes are created by amdgpu and KFD on the host.
-
 1. Clone the `https://github.com/AMD-Ecosystem/ray <https://github.com/AMD-Ecosystem/ray>`__ repository:
 
    .. code-block:: bash
