@@ -74,3 +74,4 @@ Ray is well suited for end-to-end ML systems for the following reasons:
 
 - **Seamless GPU integration** allows efficient scheduling and utilization
   of ROCm-powered AMD Instinct clusters.
+  
