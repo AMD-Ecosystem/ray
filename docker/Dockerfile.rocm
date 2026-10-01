@@ -11,7 +11,8 @@ FROM ${BASE_IMAGE}
 ENV RAY_EXPERIMENTAL_NOSET_HIP_VISIBLE_DEVICES=
 ENV RAY_EXPERIMENTAL_NOSET_ROCR_VISIBLE_DEVICES=
 
-ARG RAY_VERSION=nightly # stable, nightly, version number, or a wheel path/URL
+ARG RAY_VERSION=2.58.0
+#nightly # stable, nightly, version number, or a wheel path/URL
 
 RUN if [ "${RAY_VERSION}" = "nightly" ]; then \
       PY_TAG="cp$(python -c 'import sys; print(f"{sys.version_info.major}{sys.version_info.minor}")')" && \
