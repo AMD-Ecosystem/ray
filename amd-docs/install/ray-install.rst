@@ -100,7 +100,7 @@ Install Ray on bare metal or a custom container
 
 Follow these steps if you prefer to install ROCm manually on your host system or in a custom container.
 
-1. Install ROCm. Follow the `ROCm installation guide <https://rocm.docs.amd.com/en/docs-10.0.0/install/rocm.html?fam=instinct&w=compute&gpu=amd-instinct-mi355x&os=ubuntu&ubuntu-ver=24.04.4&i=pkgman&gfx=gfx950>`__ to install ROCm on your system. This page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
+1. Install ROCm. Follow the `ROCm installation guide <https://rocm.docs.amd.com/en/docs-10.0.0/install/rocm.html?fam=instinct&w=compute&gpu=amd-instinct-mi355x&os=ubuntu&ubuntu-ver=24.04.4&i=pkgman&gfx=gfx950>`__ to install ROCm on your system. That page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
 
    Once installed, verify your ROCm installation using:
 
@@ -156,11 +156,11 @@ Follow these steps if you prefer to install ROCm manually on your host system or
    
 2. Install PyTorch 2.12.0 with ROCm support. Follow the
    `PyTorch on ROCm installation guide <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html?fam=instinct&gpu=amd-instinct-mi355x&os=linux&rocm-ver=10.0.0&pytorch-ver=2.12.0&i=pip&w=compute&gfx=gfx950>`__.
-   This page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
+   That page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
 
 3. Install vLLM 0.27.0 with ROCm support. Follow the
    `vLLM on ROCm installation guide <https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/inference/vllm.html?fam=instinct&gpu=mi355x&rocm-ver=10.0.0&vllm-ver=0.27&i=pip&w=compute&gfx=gfx950>`__.
-   This page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
+   That page is parameterized for AMD Instinct MI355X. Select your GPU on the page if you use a different Instinct platform.
 
 4. Install the required version of Ray with ROCm support using pip:
 
