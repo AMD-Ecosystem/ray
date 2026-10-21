@@ -11,7 +11,7 @@ Ray on ROCm installation
 System requirements
 ====================================================================
 
-To use Ray `2.59.0 <https://github.com/ray-project/ray/releases/tag/ray-2.59.0>`__ on ROCm, you need the following prerequisites:
+To use Ray `Ray 2.59.0.amd0 <https://github.com/AMD-Ecosystem/ray/tree/release/2.59.0.amd0>`__, you need the following prerequisites:
 
 - **ROCm version:** `10.1.0 <https://rocm.docs.amd.com/en/docs-10.1.0/>`__
 - **Operating system:** Ubuntu 24.04
