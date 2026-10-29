@@ -97,7 +97,7 @@ Install Ray on bare metal or a custom container
 
 Follow these steps if you prefer to install ROCm manually on your host system or in a custom container.
 
-1. Install ROCm. Follow the `ROCm installation guide <https://rocm.docs.amd.com/en/latest/deploy/linux/quick_start.html>`_ to install ROCm on your system.
+1. Install ROCm. Follow the `ROCm installation guide <https://rocm.docs.amd.com/en/docs-10.1.0/install/rocm.html>`_ to install ROCm on your system.
 
    Once installed, verify your ROCm installation using:
 
